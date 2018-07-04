@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+    grpc-node:
+      container_name: 'grpc-node'
+      build: .
+      environment:
+        GRPC_ENV: 'production'
+      ports:
+        - '50051:50051'
+      networks:
+        - default
+        - app_net
+
+networks:
+    app_net:
+      external: true
