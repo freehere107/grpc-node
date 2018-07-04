@@ -5,6 +5,6 @@
     npm install
 
 ## run
+    node server.js
    
-   node server.js
-   node client.js
+    node client.js
