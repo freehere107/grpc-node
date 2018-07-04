@@ -4,13 +4,19 @@ let eth_sign = require(__dirname + '/lib/eth_sign');
 let web3_proto = grpc.load(PROTO_PATH).web3;
 
 function SignedTypeMsg(call, callback) {
-    params = JSON.parse(call.request.msg);
-    privateKey = call.request.private_key;
-    callback(null, {message: eth_sign.ethjsSignTypedData(params, privateKey)});
+    callback(null, {message: eth_sign.ethSignTypedData(call.request.msg, call.request.private_key)});
 }
+
+function RecoverSignedTypeMsg(call, callback) {
+    callback(null, {message: eth_sign.ethRecoverTypedSign(call.request.msg, call.request.signed)});
+}
+
 function main() {
     let server = new grpc.Server();
-    server.addService(web3_proto.EthWeb3.service, {SignedTypeMsg: SignedTypeMsg});
+    server.addService(web3_proto.EthWeb3.service, {
+        SignedTypeMsg: SignedTypeMsg,
+        RecoverSignedTypeMsg: RecoverSignedTypeMsg
+    });
     server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
     server.start();
 }

@@ -5,6 +5,8 @@ package web3;
 service EthWeb3 {
     rpc SignedTypeMsg (TypeMsg) returns (Signed) {
     }
+    rpc RecoverSignedTypeMsg (RecoverMsg) returns (RecoverAddress) {
+    }
 }
 
 message TypeMsg {
@@ -13,5 +15,14 @@ message TypeMsg {
 }
 
 message Signed {
+    string message = 1;
+}
+
+message RecoverMsg {
+    string msg = 1;
+    string signed = 2;
+}
+
+message RecoverAddress {
     string message = 1;
 }
