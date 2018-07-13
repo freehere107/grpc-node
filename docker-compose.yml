@@ -9,7 +9,6 @@ services:
       ports:
         - '50051:50051'
       networks:
-        - default
         - app_net
 
 networks:
