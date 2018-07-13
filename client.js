@@ -4,7 +4,7 @@ let grpc = require('grpc');
 let hello_proto = grpc.load(PROTO_PATH).web3;
 
 function main() {
-    let client = new hello_proto.EthWeb3('localhost:50052', grpc.credentials.createInsecure());
+    let client = new hello_proto.EthWeb3('localhost:50051', grpc.credentials.createInsecure());
     let private_key = "";
     let params = [
         {
