@@ -7,6 +7,8 @@ service EthWeb3 {
     }
     rpc RecoverSignedTypeMsg (RecoverMsg) returns (RecoverAddress) {
     }
+    rpc DecodeTokenId (TokeIdMsg) returns (Coordinate) {
+    }
 }
 
 message TypeMsg {
@@ -24,5 +26,14 @@ message RecoverMsg {
 }
 
 message RecoverAddress {
+    string message = 1;
+}
+
+message TokeIdMsg {
+    string address = 1;
+    string tokenId = 2;
+}
+
+message Coordinate {
     string message = 1;
 }
