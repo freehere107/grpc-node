@@ -16,6 +16,7 @@ function RecoverSignedTypeMsg(call, callback) {
 function DecodeTokenId(call, callback) {
     let landAbi = JSON.parse(fs.readFileSync(__dirname + '/contract/land.json', 'utf8'));
     land.decodeTokenId(landAbi, call.request.address, call.request.tokenId, (result) => {
+        console.log("result",result)
         callback(null, {message: result});
     })
 }
