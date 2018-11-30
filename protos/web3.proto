@@ -9,7 +9,7 @@ service EthWeb3 {
     }
     rpc DecodeTokenId (TokeIdMsg) returns (Coordinate) {
     }
-    rpc EthDerivedAddressVerify (TokeIdMsg) returns (EthVerfiyResult) {
+    rpc EthDerivedAddressVerify (EthDerivedAddress) returns (EthVerfiyResult) {
     }
 }
 
