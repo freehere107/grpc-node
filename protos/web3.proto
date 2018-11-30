@@ -9,6 +9,8 @@ service EthWeb3 {
     }
     rpc DecodeTokenId (TokeIdMsg) returns (Coordinate) {
     }
+    rpc EthDerivedAddressVerify (EthDerivedAddress) returns (EthVerfiyResult) {
+    }
 }
 
 message TypeMsg {
@@ -36,4 +38,14 @@ message TokeIdMsg {
 
 message Coordinate {
     string message = 1;
+}
+
+message EthVerfiyResult {
+    bool message = 1;
+}
+
+message EthDerivedAddress{
+    string extendedPublicKey = 1;
+    string path = 2;
+    string address = 3;
 }
