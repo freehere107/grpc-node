@@ -11,6 +11,8 @@ service EthWeb3 {
     }
     rpc EthDerivedAddressVerify (EthDerivedAddress) returns (EthVerfiyResult) {
     }
+    rpc RecoverPersonalSigned (RecoverMsg) returns (RecoverAddress) {
+    }
 }
 
 message TypeMsg {

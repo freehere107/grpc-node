@@ -18,6 +18,10 @@ function EthDerivedAddressVerify(call, callback) {
     callback(null, {message: addressVerify.ethDerivedAddressVerify(call.request.extendedPublicKey, call.request.path, call.request.address)});
 }
 
+function RecoverPersonalSigned(call, callback) {
+    callback(null, {message: eth_sign.ethRecoverPersonalSign(call.request.msg, call.request.signed)});
+}
+
 function DecodeTokenId(call, callback) {
     let landAbi = JSON.parse(fs.readFileSync(__dirname + '/contract/land.json', 'utf8'));
     land.decodeTokenId(landAbi, call.request.address, call.request.tokenId, (result) => {
@@ -32,7 +36,8 @@ function main() {
         SignedTypeMsg: SignedTypeMsg,
         RecoverSignedTypeMsg: RecoverSignedTypeMsg,
         DecodeTokenId: DecodeTokenId,
-        EthDerivedAddressVerify: EthDerivedAddressVerify
+        EthDerivedAddressVerify: EthDerivedAddressVerify,
+        RecoverPersonalSigned: RecoverPersonalSigned,
     });
     server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
     server.start();
